@@ -24,3 +24,37 @@ The Sketch Viewer is a specialized software tool developed in C for rendering gr
 - **Display Controls:** Includes instructions for manipulating the display directly from the binary file, such as showing the current state of the drawing, pausing for a specified duration, and signaling the end of a frame in animations.
 
 # Circular Doubly Linked List (list.c)
+
+This project implements a circular doubly linked list in C, providing a versatile and dynamic data structure for storing sequences of elements. Circular doubly linked lists are an advanced type of linked list where each node points to both the next and the previous nodes in the sequence, and the list is circular in nature, meaning the last node points back to the first node, creating a complete loop. This implementation includes a variety of functions for creating, navigating, modifying, and destroying the list, making it a powerful tool for handling ordered data efficiently.
+
+## Key Features
+
+### 1. Dynamic List Creation and Management
+
+- _newList(item e):_ Initializes a new circular doubly linked list with a single node containing the value e. This function dynamically allocates memory for both the list and its sentinel node, setting up the structure for further use.
+- _freeList(list *xs):_ Safely deallocates all nodes in the list, including the sentinel node, and frees the list structure itself. This function ensures that all memory allocated for the list is properly released, preventing memory leaks.
+
+### 2. Navigation Functions
+
+These functions allow traversal of the list in both forward and backward directions, enabling flexible data access patterns.
+
+- _first(list *xs):_ Sets the current position to the first actual element of the list, skipping the sentinel node.
+- _last(list *xs):_ Moves the current position to the last element, showcasing the circular nature of the list by navigating directly from the sentinel node to the last element.
+- _none(list *xs):_ Checks if the current position is the sentinel node, indicating either an empty list or a full loop traversal.
+- _after(list *xs)_ and _before(list *xs):_ These functions move the current position one node forward or backward, respectively, allowing step-wise navigation through the list.
+
+### 3. Data Access and Modification
+
+- _get(list *xs):_ Retrieves the value of the node at the current position. This function provides read access to the data within the list without modifying the list structure.
+- _set(list *xs, item x):_ Replaces the value of the node at the current position with a new value x. This function allows for direct modification of the list's contents at any given point.
+
+### 4. Insertion and Deletion Operations
+
+These functions modify the list structure by adding or removing nodes, demonstrating the flexibility and dynamic nature of linked lists.
+
+- _insertAfter(list *xs, item x)_ and _insertBefore(list *xs, item x):_ Insert a new node containing the value x immediately after or before the current position, respectively. These functions adjust the surrounding nodes' pointers to maintain the list's integrity.
+- _deleteToAfter(list *xs)_ and _deleteToBefore(list *xs):_ Remove the node immediately after or before the current position. These operations ensure the list remains circular by properly re-linking the adjacent nodes.
+
+### 5. Robust Testing Framework
+
+The provided test suite covers various use cases and edge cases, validating the functionality of all operations. By defining _test_list_, users can run a comprehensive set of assertions that check the correctness of the list's behavior under different conditions, ensuring reliability and stability of the implementation.
