@@ -58,3 +58,45 @@ These functions modify the list structure by adding or removing nodes, demonstra
 ### 5. Robust Testing Framework
 
 The provided test suite covers various use cases and edge cases, validating the functionality of all operations. By defining _test_list_, users can run a comprehensive set of assertions that check the correctness of the list's behavior under different conditions, ensuring reliability and stability of the implementation.
+
+# Sketch2PGM Converter (converter.c)
+
+This project is a comprehensive C-based application designed to convert sketch instructions from a .sk file format into a .pgm (Portable GrayMap) image. It introduces an innovative way to interpret drawing commands encoded in binary within .sk files and render them as grayscale images. This conversion process not only showcases the versatility of binary file handling in C but also bridges the gap between simple encoded drawing instructions and visual representations.
+
+## Description
+
+At its core, the program operates by reading a series of encoded commands from a .sk file, which contain instructions for drawing lines, blocks (rectangles), and setting colors (grayscale intensity). These commands are decoded and executed to modify an in-memory representation of the image. Once all commands have been processed, the resultant image is saved as a .pgm file, a widely supported format for grayscale images that can be easily viewed or processed further with image editing tools. The encoding scheme for the drawing commands uses a combination of opcodes and operands, allowing for compact and efficient storage of drawing instructions. This approach demonstrates a practical application of binary file operations, bitwise manipulation, and the implementation of custom drawing algorithms.
+
+## Key Features
+
+- **Command Decoding:** Efficiently decodes drawing commands stored in binary format within .sk files.
+- **Drawing Primitives:** Supports basic drawing operations, including lines and filled rectangles, with plans to extend functionality to more complex shapes.
+- **Grayscale Support:** Implements grayscale coloring, allowing for varied intensity in the drawings, which can be utilized to add depth or shading to the images.
+- **Dynamic Memory Management:** Utilizes dynamic memory allocation for image data storage, ensuring efficient use of resources for images of variable sizes.
+- **Error Handling:** Incorporates basic error handling for file operations, ensuring robustness and reliability of the conversion process.
+- **Portable GrayMap (PGM) Output:** Generates output in the .pgm format, facilitating easy viewing and further processing of the converted images.
+- **Modular Design:** Structured in a way that separates the drawing logic from file handling and the main application flow, making the codebase easier to understand and extend.
+
+## Setup and Initialization
+
+The program begins by initializing a new state for the conversion process, including setting up an empty image buffer. This is accomplished through the newState function, which prepares the environment for processing drawing commands.
+
+## Command Processing
+
+Drawing commands are read from the .sk file in a binary format. Each command consists of an opcode and an operand, dictating the action to be taken (e.g., drawing a line, setting the color) and the parameters for the action, respectively. The readSketch function oversees reading these commands and delegating their execution to appropriate handlers.
+
+## Drawing Operations
+
+Based on the decoded commands, the program performs drawing operations on the in-memory image buffer. It supports drawing lines and blocks (rectangles) as specified by the sketch instructions, adjusting for color intensity as dictated by the grayscale color commands. The drawing logic, encapsulated in convertLine and convertBlock, demonstrates basic computer graphics algorithms for rasterizing shapes.
+
+## Finalizing the Image
+
+Once all commands have been processed, the resultant image is written to a .pgm file using the writeFile function. This function also handles formatting the output according to the .pgm specifications, ensuring compatibility with image viewers and editors.
+
+## Memory Management and Cleanup
+
+Dynamic memory allocated for the image buffer and the application state is properly freed at the end of the conversion process, preventing memory leaks and ensuring efficient resource use.
+
+## Extension and Customization
+
+The modular design of the program allows for easy extension and customization. New drawing commands can be added by introducing additional opcodes and implementing corresponding drawing functions. Similarly, the output format can be adapted to support other image types with minimal adjustments to the image writing logic.
