@@ -22,3 +22,5 @@ The Sketch Viewer is a specialized software tool developed in C for rendering gr
 - **Block Drawing:** Capable of drawing filled rectangles (blocks) by specifying corner points. This adds versatility to the types of graphics that can be created, from simple shapes to pixel-art-style images.
 - **Dynamic Target Positioning:** Implements commands for dynamically changing the "target" position — where the next drawing operation will occur — without actually drawing. This allows for more complex and efficient drawing sequences.
 - **Display Controls:** Includes instructions for manipulating the display directly from the binary file, such as showing the current state of the drawing, pausing for a specified duration, and signaling the end of a frame in animations.
+
+# Circular Doubly Linked List (list.c)
