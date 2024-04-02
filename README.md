@@ -77,26 +77,26 @@ At its core, the program operates by reading a series of encoded commands from a
 - **Portable GrayMap (PGM) Output:** Generates output in the .pgm format, facilitating easy viewing and further processing of the converted images.
 - **Modular Design:** Structured in a way that separates the drawing logic from file handling and the main application flow, making the codebase easier to understand and extend.
 
-## Setup and Initialization
+## 1. Setup and Initialization
 
 The program begins by initializing a new state for the conversion process, including setting up an empty image buffer. This is accomplished through the newState function, which prepares the environment for processing drawing commands.
 
-## Command Processing
+## 2. Command Processing
 
 Drawing commands are read from the .sk file in a binary format. Each command consists of an opcode and an operand, dictating the action to be taken (e.g., drawing a line, setting the color) and the parameters for the action, respectively. The readSketch function oversees reading these commands and delegating their execution to appropriate handlers.
 
-## Drawing Operations
+## 3. Drawing Operations
 
 Based on the decoded commands, the program performs drawing operations on the in-memory image buffer. It supports drawing lines and blocks (rectangles) as specified by the sketch instructions, adjusting for color intensity as dictated by the grayscale color commands. The drawing logic, encapsulated in convertLine and convertBlock, demonstrates basic computer graphics algorithms for rasterizing shapes.
 
-## Finalizing the Image
+## 4. Finalizing the Image
 
 Once all commands have been processed, the resultant image is written to a .pgm file using the writeFile function. This function also handles formatting the output according to the .pgm specifications, ensuring compatibility with image viewers and editors.
 
-## Memory Management and Cleanup
+## 5. Memory Management and Cleanup
 
 Dynamic memory allocated for the image buffer and the application state is properly freed at the end of the conversion process, preventing memory leaks and ensuring efficient resource use.
 
-## Extension and Customization
+## 6. Extension and Customization
 
 The modular design of the program allows for easy extension and customization. New drawing commands can be added by introducing additional opcodes and implementing corresponding drawing functions. Similarly, the output format can be adapted to support other image types with minimal adjustments to the image writing logic.
